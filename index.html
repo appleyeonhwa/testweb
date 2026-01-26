@@ -52,6 +52,20 @@
             background-color: #9ca3af;
             cursor: not-allowed;
         }
+
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #f4f4f4;
+        }
+
+        .dark-mode .container {
+            background: #2a2a2a;
+            box-shadow: 0 6px 18px rgba(255,255,255,0.1);
+        }
+
+        .dark-mode h2 {
+            color: #f4f4f4;
+        }
     </style>
 </head>
 <body>
@@ -59,35 +73,55 @@
 <div class="container">
     <h2>랜덤 이미지 추천</h2>
     <img id="image" alt="랜덤 이미지">
-    <button id="btn" onclick="startRandom()">랜덤 시작</button>
-</div>
-
-<script>
-    let intervalId = null;
-
-    function startRandom() {
-        const img = document.getElementById("image");
-        const btn = document.getElementById("btn");
-
-        let count = 0;
-        btn.disabled = true; // 중복 클릭 방지
-
-        intervalId = setInterval(() => {
-            const random = Math.floor(Math.random() * 1000000);
-            img.src = "https://picsum.photos/600/400?random=" + random;
-
-            count++;
-
-            if (count >= 5) {
-                clearInterval(intervalId);
-                btn.disabled = false;
+            <button id="btn" onclick="startRandom()">랜덤 시작</button>
+            <button id="theme-toggle" style="margin-top: 10px;">모드 변경</button>
+        </div>
+    
+        <script>
+            let intervalId = null;
+    
+            function startRandom() {
+                const img = document.getElementById("image");
+                const btn = document.getElementById("btn");
+    
+                let count = 0;
+                btn.disabled = true; // 중복 클릭 방지
+    
+                intervalId = setInterval(() => {
+                    const random = Math.floor(Math.random() * 1000000);
+                    img.src = "https://picsum.photos/600/400?random=" + random;
+    
+                    count++;
+    
+                    if (count >= 5) {
+                        clearInterval(intervalId);
+                        btn.disabled = false;
+                    }
+                }, 1000); // 1초 간격
             }
-        }, 1000); // 1초 간격
-    }
-
-    // 최초 이미지
-    startRandom();
-</script>
-
-</body>
-</html>
+    
+            // 최초 이미지
+            startRandom();
+    
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+    
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme) {
+                body.classList.add(currentTheme);
+            }
+    
+            themeToggle.addEventListener('click', () => {
+                if (body.classList.contains('dark-mode')) {
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light-mode');
+                } else {
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark-mode');
+                }
+            });
+        </script>
+    
+    </body>
+    </html>
+    
