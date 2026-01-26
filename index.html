@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>랜덤 이미지 5연속</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 24px;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            width: 340px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 14px;
+        }
+
+        img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            background: #e5e7eb;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2563eb;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>랜덤 이미지 추천</h2>
+    <img id="image" alt="랜덤 이미지">
+    <button id="btn" onclick="startRandom()">랜덤 시작</button>
+</div>
+
+<script>
+    let intervalId = null;
+
+    function startRandom() {
+        const img = document.getElementById("image");
+        const btn = document.getElementById("btn");
+
+        let count = 0;
+        btn.disabled = true; // 중복 클릭 방지
+
+        intervalId = setInterval(() => {
+            const random = Math.floor(Math.random() * 1000000);
+            img.src = "https://picsum.photos/600/400?random=" + random;
+
+            count++;
+
+            if (count >= 5) {
+                clearInterval(intervalId);
+                btn.disabled = false;
+            }
+        }, 1000); // 1초 간격
+    }
+
+    // 최초 이미지
+    startRandom();
+</script>
+
+</body>
+</html>
