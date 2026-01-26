@@ -53,17 +53,17 @@
             cursor: not-allowed;
         }
 
-        .dark-mode {
-            background-color: #1a1a1a;
+        .red-mode {
+            background-color: #4c0000;
             color: #f4f4f4;
         }
 
-        .dark-mode .container {
-            background: #2a2a2a;
+        .red-mode .container {
+            background: #800000;
             box-shadow: 0 6px 18px rgba(255,255,255,0.1);
         }
 
-        .dark-mode h2 {
+        .red-mode h2 {
             color: #f4f4f4;
         }
     </style>
@@ -112,12 +112,12 @@
             }
     
             themeToggle.addEventListener('click', () => {
-                if (body.classList.contains('dark-mode')) {
-                    body.classList.remove('dark-mode');
+                if (body.classList.contains('red-mode')) {
+                    body.classList.remove('red-mode');
                     localStorage.setItem('theme', 'light-mode');
                 } else {
-                    body.classList.add('dark-mode');
-                    localStorage.setItem('theme', 'dark-mode');
+                    body.classList.add('red-mode');
+                    localStorage.setItem('theme', 'red-mode');
                 }
             });
         </script>
