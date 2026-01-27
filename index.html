@@ -66,6 +66,20 @@
         .red-mode h2 {
             color: #f4f4f4;
         }
+
+        .blue-mode {
+            background-color: #001f3f;
+            color: #f4f4f4;
+        }
+
+        .blue-mode .container {
+            background: #003366;
+            box-shadow: 0 6px 18px rgba(255,255,255,0.1);
+        }
+
+        .blue-mode h2 {
+            color: #f4f4f4;
+        }
     </style>
 </head>
 <body>
@@ -114,6 +128,10 @@
             themeToggle.addEventListener('click', () => {
                 if (body.classList.contains('red-mode')) {
                     body.classList.remove('red-mode');
+                    body.classList.add('blue-mode');
+                    localStorage.setItem('theme', 'blue-mode');
+                } else if (body.classList.contains('blue-mode')) {
+                    body.classList.remove('blue-mode');
                     localStorage.setItem('theme', 'light-mode');
                 } else {
                     body.classList.add('red-mode');
