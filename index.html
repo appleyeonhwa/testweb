@@ -3,113 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>대한민국의 아름다운 계곡 - 여름 휴가지 추천</title>
-    <meta name="description" content="대한민국의 맑고 시원한 계곡 명소를 소개합니다. 지리산 뱀사골, 설악산 천불동, 동해 무릉계곡 등 최고의 여름 휴가지를 만나보세요.">
+    <title>대한민국 계곡 도감 - 최고의 여름 휴가지</title>
+    <meta name="description" content="강원도 철원, 정선, 영월 등 대한민국 최고의 계곡 70곳 정보. 수심, 주차, 테마별 추천 계곡을 찾아보세요.">
     <link rel="stylesheet" href="style.css">
-    <!-- Google AdSense Script -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
-     crossorigin="anonymous"></script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <header>
+    <header class="app-header">
         <div class="container">
-            <h1>🌊 대한민국의 명품 계곡</h1>
-            <p>무더위를 날려줄 시원한 계곡 여행 가이드</p>
+            <h1 class="logo" onclick="route('home')">🌊 계곡도감</h1>
+            <nav>
+                <a href="#" onclick="route('home')">홈</a>
+                <a href="#" onclick="route('list')">계곡찾기</a>
+            </nav>
         </div>
     </header>
 
-    <div class="ad-banner container">
-        <p class="ad-label">광고</p>
-        <!-- Main Top Ad Placeholder -->
+    <!-- Top Ad Banner -->
+    <div class="ad-container top-banner">
+        <p class="ad-label">Sponsored</p>
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
              data-ad-slot="1234567890"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
-    <main class="container">
-        <section class="intro">
-            <h2>여름철 최고의 피서지, 계곡</h2>
-            <p>한국의 산과 골짜기에는 숨겨진 보석 같은 계곡들이 많습니다. 가족, 친구, 연인과 함께 떠나기 좋은 대한민국 대표 계곡들을 소개합니다.</p>
-        </section>
-
-        <section class="valley-list">
-            <!-- Valley 1 -->
-            <article class="valley-card">
-                <div class="valley-info">
-                    <h3>1. 지리산 뱀사골</h3>
-                    <p class="location">📍 위치: 전라북도 남원시 산내면</p>
-                    <p class="desc">지리산 북부의 주능선이 동서로 길게 뻗어 만들어낸 웅장한 계곡입니다. 맑은 물과 기암괴석이 어우러져 절경을 이룹니다. 여름철 피서지로 인기가 매우 높습니다.</p>
-                </div>
-            </article>
-
-            <!-- In-feed Ad Placeholder -->
-            <div class="ad-in-feed">
-                 <p class="ad-label">광고</p>
-                 <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-format="fluid"
-                     data-ad-layout-key="-fb+5w+4e-db+86"
-                     data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                     data-ad-slot="9876543210"></ins>
-                 <script>
-                      (adsbygoogle = window.adsbygoogle || []).push({});
-                 </script>
-            </div>
-
-            <!-- Valley 2 -->
-            <article class="valley-card">
-                <div class="valley-info">
-                    <h3>2. 설악산 천불동 계곡</h3>
-                    <p class="location">📍 위치: 강원도 속초시 설악동</p>
-                    <p class="desc">설악산의 대표적인 계곡으로, 비선대에서 대청봉으로 오르는 길목에 위치합니다. 천 개의 불상이 늘어서 있는 듯한 바위들이 장관을 이루어 천불동이라 불립니다.</p>
-                </div>
-            </article>
-
-            <!-- Valley 3 -->
-            <article class="valley-card">
-                <div class="valley-info">
-                    <h3>3. 동해 무릉계곡</h3>
-                    <p class="location">📍 위치: 강원도 동해시 삼화동</p>
-                    <p class="desc">신선이 노닐었다는 전설이 깃든 곳으로, 넓은 무릉반석과 용추폭포가 유명합니다. 국민관광지로 지정되어 관리되고 있으며 사계절 내내 아름답습니다.</p>
-                </div>
-            </article>
-
-             <!-- Valley 4 -->
-             <article class="valley-card">
-                <div class="valley-info">
-                    <h3>4. 가평 용추계곡</h3>
-                    <p class="location">📍 위치: 경기도 가평군 가평읍</p>
-                    <p class="desc">수도권에서 접근성이 좋아 인기가 높습니다. 칼봉산에서 발원하여 옥녀봉을 감싸고 흐르는 물줄기가 시원함을 선사합니다. 9곡으로 이루어진 비경을 자랑합니다.</p>
-                </div>
-            </article>
-        </section>
+    <main id="app" class="container">
+        <!-- Dynamic Content Injected Here -->
     </main>
 
-    <div class="ad-banner container">
-        <p class="ad-label">광고</p>
-        <!-- Bottom Ad Placeholder -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-             data-ad-slot="1122334455"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-
-    <footer>
+    <footer class="app-footer">
         <div class="container">
-            <p>&copy; 2024 대한민국 계곡 소개. All rights reserved.</p>
-            <p>이 사이트는 수익창출을 위해 구글 애드센스를 활용하고 있습니다.</p>
+            <p>&copy; 2024 대한민국 계곡 도감. All rights reserved.</p>
+            <p>본 사이트는 수익 창출을 위해 제휴 마케팅 및 광고가 포함되어 있습니다.</p>
         </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="js/valleys.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
