@@ -2,92 +2,51 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>랜덤 이미지 5연속</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            background: white;
-            padding: 24px;
-            border-radius: 10px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-            width: 340px;
-            text-align: center;
-        }
-
-        h2 {
-            margin-bottom: 14px;
-        }
-
-        img {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            background: #e5e7eb;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            font-size: 16px;
-            border: none;
-            border-radius: 6px;
-            background-color: #2563eb;
-            color: white;
-            cursor: pointer;
-        }
-
-        button:disabled {
-            background-color: #9ca3af;
-            cursor: not-allowed;
-        }
-    </style>
+    <title>대한민국 계곡 도감 - 최고의 여름 휴가지</title>
+    <meta name="description" content="강원도 철원, 정선, 영월 등 대한민국 최고의 계곡 70곳 정보. 수심, 주차, 테마별 추천 계곡을 찾아보세요.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+    <header class="app-header">
+        <div class="container">
+            <h1 class="logo" onclick="route('home')">🌊 계곡도감</h1>
+            <nav>
+                <a href="#" onclick="route('home')">홈</a>
+                <a href="#" onclick="route('list')">계곡찾기</a>
+            </nav>
+        </div>
+    </header>
 
-<div class="container">
-    <h2>랜덤 이미지 추천</h2>
-    <img id="image" alt="랜덤 이미지">
-    <button id="btn" onclick="startRandom()">랜덤 시작</button>
-</div>
+    <!-- Top Ad Banner -->
+    <div class="ad-container top-banner">
+        <p class="ad-label">Sponsored</p>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
-<script>
-    let intervalId = null;
+    <main id="app" class="container">
+        <!-- Dynamic Content Injected Here -->
+    </main>
 
-    function startRandom() {
-        const img = document.getElementById("image");
-        const btn = document.getElementById("btn");
+    <footer class="app-footer">
+        <div class="container">
+            <p>&copy; 2024 대한민국 계곡 도감. All rights reserved.</p>
+            <p>본 사이트는 수익 창출을 위해 제휴 마케팅 및 광고가 포함되어 있습니다.</p>
+        </div>
+    </footer>
 
-        let count = 0;
-        btn.disabled = true; // 중복 클릭 방지
-
-        intervalId = setInterval(() => {
-            const random = Math.floor(Math.random() * 1000000);
-            img.src = "https://picsum.photos/600/400?random=" + random;
-
-            count++;
-
-            if (count >= 5) {
-                clearInterval(intervalId);
-                btn.disabled = false;
-            }
-        }, 1000); // 1초 간격
-    }
-
-    // 최초 이미지
-    startRandom();
-</script>
-
+    <!-- Scripts -->
+    <script src="js/valleys.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
