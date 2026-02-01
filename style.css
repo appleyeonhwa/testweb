@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+/* Reset & Globals */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f6f8;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: #1e88e5; /* Cool Blue */
+    color: #fff;
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+}
+
+/* Ad Styles */
+.ad-banner, .ad-in-feed {
+    background-color: #fff;
+    margin: 30px auto;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    max-width: 800px; /* Match container */
+}
+
+.ad-label {
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-bottom: 5px;
+    text-align: right;
+    width: 100%;
+    display: block;
+}
+
+/* Main Content */
+.intro {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 0 10px;
+}
+
+.intro h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #1565c0;
+}
+
+.intro p {
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Valley Cards */
+.valley-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.valley-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid #1e88e5;
+}
+
+.valley-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.valley-info h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.location {
+    color: #1e88e5;
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+}
+
+.desc {
+    color: #555;
+    font-size: 1.05rem;
+}
+
+/* Footer */
+footer {
+    background-color: #263238;
+    color: #eceff1;
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 60px;
+}
+
+footer p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    header {
+        padding: 40px 0;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .valley-card {
+        padding: 20px;
+    }
+
+    .valley-info h3 {
+        font-size: 1.3rem;
+    }
+}
