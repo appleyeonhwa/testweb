@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>제휴 문의</title>
+    <title>사용자의 미래 대학교</title>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f0f2f5;
             margin: 0;
-            padding: 20px; /* Add some padding around the content */
-            background-color: #f4f7f6;
-            min-height: 100vh; /* Ensure it takes full height but can grow */
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         .container {
-            width: 100%;
-            max-width: 500px;
-            margin: 40px auto; /* Add top/bottom margin and center horizontally */
-            padding: 40px;
             background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
         }
         h1 {
             text-align: center;
             color: #333;
             margin-bottom: 30px;
+            font-size: 24px;
         }
         .form-group {
             margin-bottom: 20px;
@@ -35,156 +38,258 @@
             font-weight: 600;
             color: #555;
         }
-        input, textarea {
-            width: 100%;
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+        }
+        input[type="number"] {
+            flex: 1;
             padding: 12px;
             border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+            border-radius: 8px;
             font-size: 16px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
         }
-        input:focus, textarea:focus {
+        input[type="number"]:focus {
             outline: none;
             border-color: #007bff;
             box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
         }
-        textarea {
-            resize: vertical;
-            min-height: 120px;
+        .unit {
+            margin-left: 10px;
+            font-weight: 600;
+            color: #555;
+            white-space: nowrap;
         }
-        button {
+        button.submit-btn {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
             transition: background-color 0.3s;
+            margin-top: 10px;
         }
-        button:hover {
+        button.submit-btn:hover {
             background-color: #0056b3;
+        }
+        .result-section {
+            display: none;
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+        .result-title {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .university-name {
+            font-size: 32px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>서비스</h1>
-        <div style="margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 20px;">
-            <h2>자전거 분류</h2>
-            <input type="file" id="image-upload" accept="image/*" style="display: block; margin-bottom: 10px;">
-            <img id="uploaded-image" src="#" alt="업로드된 이미지" style="max-width: 100%; max-height: 200px; margin-top: 10px; display: none;">
-            <button id="classify-button" type="button" disabled style="margin-top: 10px;">분류 시작</button>
-            <div id="prediction-results" style="margin-top: 15px; font-weight: 600; color: #333;"></div>
+        <h1>사용자의 미래 대학교</h1>
+        <div id="input-form">
+            <div class="form-group">
+                <label for="math">수학 평균성적</label>
+                <div class="input-wrapper">
+                    <input type="number" id="math" min="0" max="100" placeholder="0 ~ 100">
+                    <span class="unit">점</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="science">과학 평균성적</label>
+                <div class="input-wrapper">
+                    <input type="number" id="science" min="0" max="100" placeholder="0 ~ 100">
+                    <span class="unit">점</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="english">영어 평균성적</label>
+                <div class="input-wrapper">
+                    <input type="number" id="english" min="0" max="100" placeholder="0 ~ 100">
+                    <span class="unit">점</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="study">하루 평균 공부시간</label>
+                <div class="input-wrapper">
+                    <input type="number" id="study" min="0" max="24" placeholder="0 ~ 24">
+                    <span class="unit">시간</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exercise">하루 평균 운동시간</label>
+                <div class="input-wrapper">
+                    <input type="number" id="exercise" min="0" max="24" placeholder="0 ~ 24">
+                    <span class="unit">시간</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sleep">하루 평균 수면시간</label>
+                <div class="input-wrapper">
+                    <input type="number" id="sleep" min="0" max="24" placeholder="0 ~ 24">
+                    <span class="unit">시간</span>
+                </div>
+            </div>
+            <button type="button" class="submit-btn" id="predict-btn">결과 보기</button>
         </div>
 
-        <h2>제휴 문의</h2>
-        <form action="https://formspree.io/f/maqodggo" method="POST">
-            <div class="form-group">
-                <label for="name">이름</label>
-                <input type="text" id="name" name="name" required>
+        <div id="result-section" class="result-section">
+            <div class="result-title">당신이 갈 수 있는 미래 대학교는</div>
+            <div id="university-result" class="university-name"></div>
+
+            <div class="share-buttons">
+                <button type="button" id="share-kakaotalk" class="share-btn kakao-btn">카카오톡 공유하기</button>
+                <button type="button" id="share-instagram" class="share-btn instagram-btn">인스타그램 공유하기</button>
             </div>
-            <div class="form-group">
-                <label for="email">이메일</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="company">회사명</label>
-                <input type="text" id="company" name="company">
-            </div>
-            <div class="form-group">
-                <label for="message">문의 내용</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-            <button type="submit">보내기</button>
-        </form>
-        <div id="disqus_thread" style="margin-top: 40px;"></div>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-    <script type="text/javascript">
-        const URL = "https://teachablemachine.withgoogle.com/models/BsKCidTnx/";
-        let model, maxPredictions;
-
-        const imageUpload = document.getElementById("image-upload");
-        const uploadedImage = document.getElementById("uploaded-image");
-        const classifyButton = document.getElementById("classify-button");
-        const predictionResults = document.getElementById("prediction-results");
-
-        async function init() {
-            const modelURL = URL + "model.json";
-            const metadataURL = URL + "metadata.json";
-
-            // Load the model
-            model = await tmImage.load(modelURL, metadataURL);
-            maxPredictions = model.getTotalClasses();
-
-            // Setup event listeners
-            imageUpload.addEventListener("change", handleImageUpload);
-            classifyButton.addEventListener("click", classifyImage);
-
-            predictionResults.innerHTML = "모델 로딩 완료. 이미지를 업로드해주세요.";
+    <style>
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
         }
-
-        function handleImageUpload(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    uploadedImage.src = e.target.result;
-                    uploadedImage.style.display = "block";
-                    classifyButton.disabled = false;
-                    predictionResults.innerHTML = ""; // Clear previous results
-                };
-                reader.readAsDataURL(file);
-            } else {
-                uploadedImage.style.display = "none";
-                classifyButton.disabled = true;
-                predictionResults.innerHTML = "";
-            }
+        .share-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #fff;
+            transition: opacity 0.3s;
         }
-
-        async function classifyImage() {
-            if (!uploadedImage.src || uploadedImage.style.display === "none") {
-                predictionResults.innerHTML = "이미지를 먼저 업로드해주세요.";
-                return;
-            }
-
-            predictionResults.innerHTML = "분류 중...";
-            classifyButton.disabled = true; // Disable button during prediction
-
-            const prediction = await model.predict(uploadedImage);
-
-            let resultsHtml = "분류 결과:<br>";
-            for (let i = 0; i < maxPredictions; i++) {
-                const classPrediction =
-                    prediction[i].className + ": " + (prediction[i].probability * 100).toFixed(2) + "%";
-                resultsHtml += `<div>${classPrediction}</div>`;
-            }
-            predictionResults.innerHTML = resultsHtml;
-            classifyButton.disabled = false; // Re-enable button
+        .share-btn:hover {
+            opacity: 0.8;
         }
-
-        // Initialize the model when the page loads
-        init();
-    </script>
+        .kakao-btn {
+            background-color: #FEE500;
+            color: #000;
+        }
+        .instagram-btn {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+    </style>
     <script>
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-        var disqus_config = function () {
-            this.page.url = 'https://appleyeonhwa.github.io/testweb/';  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = 'partnership-form-page'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://testwebdis.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
+        function getScoreForSubject(value) {
+            if (value < 10) return 1;
+            if (value < 20) return 2;
+            if (value < 30) return 3;
+            if (value < 40) return 4;
+            if (value < 50) return 5;
+            if (value < 60) return 6;
+            if (value < 70) return 7;
+            if (value < 80) return 8;
+            if (value < 90) return 9;
+            return 11;
+        }
+
+        function getScoreForStudy(value) {
+            if (value < 1) return 3;
+            if (value < 2) return 4;
+            if (value < 3) return 5;
+            if (value < 4) return 6;
+            if (value < 5) return 7;
+            if (value < 6) return 8;
+            if (value < 7) return 9;
+            if (value < 8) return 10;
+            return 11;
+        }
+
+        function getScoreForExercise(value) {
+            if (value < 1) return 5;
+            if (value < 2) return 8;
+            return 11;
+        }
+
+        function getScoreForSleep(value) {
+            if (value < 5) return 3;
+            if (value < 6) return 5;
+            if (value < 7) return 7;
+            if (value < 8) return 9;
+            if (value < 9) return 10;
+            return 11;
+        }
+
+        function getUniversity(totalScore) {
+            if (totalScore < 30) return '경민대학교';
+            if (totalScore < 35) return '부산대학교';
+            if (totalScore < 40) return '삼육대학교';
+            if (totalScore < 45) return '국민대학교';
+            if (totalScore < 50) return '경희대학교';
+            if (totalScore < 55) return '서강대학교';
+            if (totalScore < 60) return '연세대학교';
+            return '서울대학교';
+        }
+
+        document.getElementById('predict-btn').addEventListener('click', function() {
+            const mathVal = parseFloat(document.getElementById('math').value) || 0;
+            const scienceVal = parseFloat(document.getElementById('science').value) || 0;
+            const englishVal = parseFloat(document.getElementById('english').value) || 0;
+            const studyVal = parseFloat(document.getElementById('study').value) || 0;
+            const exerciseVal = parseFloat(document.getElementById('exercise').value) || 0;
+            const sleepVal = parseFloat(document.getElementById('sleep').value) || 0;
+
+            const totalScore =
+                getScoreForSubject(mathVal) +
+                getScoreForSubject(scienceVal) +
+                getScoreForSubject(englishVal) +
+                getScoreForStudy(studyVal) +
+                getScoreForExercise(exerciseVal) +
+                getScoreForSleep(sleepVal);
+
+            const university = getUniversity(totalScore);
+
+            document.getElementById('university-result').innerText = university;
+            document.getElementById('result-section').style.display = 'block';
+        });
+
+        // Share functionality using Web Share API
+        async function shareResult(platform) {
+            const university = document.getElementById('university-result').innerText;
+            if (!university) return;
+
+            const textToShare = `내 미래 대학교는 [${university}]! 너의 미래 대학교도 확인해봐!`;
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: '사용자의 미래 대학교',
+                        text: textToShare,
+                        url: window.location.href,
+                    });
+                    console.log('Shared successfully');
+                } catch (err) {
+                    console.error('Error sharing:', err);
+                }
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                alert('이 브라우저에서는 공유 기능이 지원되지 않습니다. 결과를 복사해서 공유해보세요!\n\n' + textToShare);
+            }
+        }
+
+        document.getElementById('share-kakaotalk').addEventListener('click', function() {
+            shareResult('kakaotalk');
+        });
+
+        document.getElementById('share-instagram').addEventListener('click', function() {
+            shareResult('instagram');
+        });
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </body>
 </html>
